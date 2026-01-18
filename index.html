@@ -3,48 +3,272 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tu Nombre — Portafolio</title>
+  <title>Guadalupe Acra — Portafolio</title>
+  <meta name="description" content="Portafolio académico: macro-monetaria, informalidad y autoempleo, mercados laborales, métodos cuantitativos." />
+
+  <!-- Vintage fonts (opcional, pero recomendado) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: ui-serif, Georgia, "Times New Roman", serif; margin: 0; color:#111; }
-    header, main { max-width: 900px; margin: 0 auto; padding: 48px 20px; }
-    nav a { margin-right: 14px; text-decoration: none; color:#111; border-bottom: 1px solid #ddd; }
-    nav a:hover { border-bottom-color:#111; }
-    .muted { color:#555; }
-    .card { border:1px solid #eee; border-radius: 14px; padding: 16px 18px; margin-top: 18px; }
-    .btn { display:inline-block; margin-top: 10px; padding: 8px 12px; border:1px solid #111; border-radius: 10px; text-decoration:none; color:#111; }
-    .btn:hover { background:#111; color:#fff; }
+    :root{
+      --paper: #f6f1e6;
+      --ink: #1b1b1b;
+      --muted: #5a5147;
+      --line: rgba(27,27,27,.14);
+      --accent: #6b1d2b;        /* burgundy */
+      --accent2:#2d3a2f;        /* deep olive */
+      --card: rgba(255,255,255,.55);
+      --shadow: 0 14px 30px rgba(0,0,0,.10);
+      --radius: 18px;
+      --max: 980px;
+    }
+
+    /* Paper background (sin imágenes) */
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(107,29,43,.06), transparent 60%),
+        radial-gradient(900px 700px at 80% 30%, rgba(45,58,47,.06), transparent 55%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,.015), rgba(0,0,0,.015) 1px, transparent 1px, transparent 6px),
+        linear-gradient(180deg, var(--paper), #f3ecde);
+      font-family: "Spectral", ui-serif, Georgia, "Times New Roman", serif;
+      line-height: 1.7;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a.underlined{ border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+    a.underlined:hover{ border-bottom-color: rgba(27,27,27,.45); }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 44px 20px 64px; }
+
+    /* Header */
+    header{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 34px 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.40);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    header:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(120px 120px at 12% 26%, rgba(107,29,43,.12), transparent 65%),
+        radial-gradient(160px 160px at 88% 18%, rgba(45,58,47,.10), transparent 65%);
+      pointer-events:none;
+    }
+    .toprow{ display:flex; align-items:flex-end; justify-content:space-between; gap: 18px; flex-wrap:wrap; position:relative; }
+    .name{
+      font-family: "EB Garamond", serif;
+      font-weight: 600;
+      letter-spacing: .2px;
+      font-size: clamp(34px, 3.6vw, 46px);
+      margin: 0;
+    }
+    .tag{
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .monogram{
+      width: 46px; height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      display:grid; place-items:center;
+      font-family: "EB Garamond", serif;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(255,255,255,.45);
+    }
+
+    /* Nav */
+    nav{
+      display:flex; gap: 16px; flex-wrap: wrap;
+      position: relative;
+      padding-top: 6px;
+    }
+    nav a{
+      font-size: 15px;
+      color: var(--ink);
+      border-bottom: 1px solid transparent;
+      padding-bottom: 3px;
+    }
+    nav a:hover{ border-bottom-color: rgba(27,27,27,.35); }
+    .divider{
+      display:flex; align-items:center; gap: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+      position: relative;
+    }
+    .divider:before, .divider:after{
+      content:"";
+      height: 1px;
+      background: var(--line);
+      flex: 1;
+    }
+    .divider span{
+      font-family: "EB Garamond", serif;
+      letter-spacing: .6px;
+    }
+
+    /* Main sections */
+    main{ margin-top: 22px; }
+    .lead{
+      padding: 18px 4px 6px;
+      color: var(--ink);
+      font-size: 17px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+    @media(min-width: 860px){
+      .grid{ grid-template-columns: 1.2fr .8fr; }
+    }
+
+    .card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 18px 18px;
+    }
+    .card h2{
+      font-family: "EB Garamond", serif;
+      font-weight: 600;
+      margin: 0 0 6px 0;
+      font-size: 26px;
+    }
+    .muted{ color: var(--muted); }
+
+    .btnrow{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    .btn{
+      display:inline-flex; align-items:center; gap: 8px;
+      padding: 9px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(27,27,27,.35);
+      background: rgba(255,255,255,.55);
+      transition: transform .12s ease, background .12s ease;
+      font-size: 14px;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.80); }
+    .btn.primary{
+      border-color: rgba(107,29,43,.45);
+      color: var(--accent);
+    }
+
+    /* Contact */
+    .contactlist{ margin: 10px 0 0; padding-left: 18px; }
+    .contactlist li{ margin: 6px 0; }
+    .pill{
+      display:inline-block;
+      font-size: 12px;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      border: 1px solid rgba(45,58,47,.28);
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.45);
+      margin-bottom: 10px;
+    }
+
+    footer{
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+    .smallcaps{ font-variant: small-caps; letter-spacing: .6px; }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Tu Nombre</h1>
-    <p class="muted">Economía • Lima, Perú</p>
-    <nav>
-      <a href="/about/">Sobre mí</a>
-      <a href="/research/">Research / Ensayos</a>
-      <a href="/projects/">Proyectos</a>
-      <a href="/cv/">CV</a>
-    </nav>
-  </header>
+  <div class="wrap">
+    <header>
+      <div class="toprow">
+        <div>
+          <h1 class="name">Guadalupe Acra</h1>
+          <p class="tag">Economía • Lima, Perú</p>
+        </div>
+        <div class="monogram" aria-hidden="true">GA</div>
+      </div>
 
-  <main>
-    <p>
-      Intereses: macro-monetaria, informalidad y autoempleo, mercados laborales, métodos cuantitativos.
-      Aquí publico ensayos breves, notas de lectura y proyectos.
-    </p>
+      <!-- OJO: enlaces relativos (sin /) para que funcionen en tu repo -->
+      <nav>
+        <a href="about/" class="underlined">Sobre mí</a>
+        <a href="research/" class="underlined">Research / Ensayos</a>
+        <a href="projects/" class="underlined">Proyectos</a>
+        <a href="cv/" class="underlined">CV</a>
+        <a href="#contacto" class="underlined">Contacto</a>
+      </nav>
 
-    <div class="card">
-      <h2>Último ensayo</h2>
-      <p class="muted">Título del ensayo (fecha)</p>
-      <p>Resumen de 2–3 líneas del aporte central.</p>
-      <a class="btn" href="/research/">Ver Research</a>
-    </div>
+      <div class="divider"><span>❦</span></div>
+    </header>
 
-    <div class="card">
-      <h2>CV</h2>
-      <p class="muted">Versión PDF y versión web.</p>
-      <a class="btn" href="/cv/">Abrir CV</a>
-    </div>
-  </main>
+    <main>
+      <p class="lead">
+        Intereses: macro-monetaria, informalidad y autoempleo, mercados laborales, métodos cuantitativos.
+        Aquí publico ensayos breves, notas de lectura y proyectos.
+      </p>
+
+      <div class="grid">
+        <section class="card">
+          <span class="pill">Destacado</span>
+          <h2>Último ensayo</h2>
+          <p class="muted">Título del ensayo (fecha)</p>
+          <p>Resumen de 2–3 líneas del aporte central.</p>
+          <div class="btnrow">
+            <a class="btn primary" href="research/">Ver Research</a>
+            <a class="btn" href="projects/">Ver Proyectos</a>
+          </div>
+        </section>
+
+        <aside class="card">
+          <span class="pill">Perfil</span>
+          <h2>CV</h2>
+          <p class="muted">Versión PDF y versión web.</p>
+          <div class="btnrow">
+            <a class="btn primary" href="cv/">Abrir CV</a>
+          </div>
+        </aside>
+      </div>
+
+      <section class="card" id="contacto" style="margin-top:16px;">
+        <span class="pill">Contacto</span>
+        <h2>Escríbeme</h2>
+        <p class="muted">Para investigación, colaboración académica o proyectos.</p>
+
+        <ul class="contactlist">
+          <!-- Reemplaza con tu Gmail real -->
+          <li><b>Email:</b> <a class="underlined" href="mailto:tuemail@gmail.com">tuemail@gmail.com</a></li>
+
+          <!-- Opcionales -->
+          <li><b>LinkedIn:</b> <a class="underlined" href="https://www.linkedin.com/in/tuusuario/" target="_blank" rel="noopener">linkedin.com/in/tuusuario</a></li>
+          <li><b>GitHub:</b> <a class="underlined" href="https://github.com/gacrat-eng" target="_blank" rel="noopener">github.com/gacrat-eng</a></li>
+        </ul>
+
+        <p class="muted" style="margin-top:12px;">
+          Si prefieres, también puedes escribirme con asunto: <span class="smallcaps">Research Collaboration</span>.
+        </p>
+      </section>
+
+      <footer>
+        <div class="divider" style="margin: 18px 0 12px;"><span>✦</span></div>
+        <div>© <span class="smallcaps">Guadalupe Acra</span> • GitHub Pages</div>
+      </footer>
+    </main>
+  </div>
 </body>
 </html>
