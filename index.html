@@ -3,272 +3,323 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Guadalupe Acra — Portafolio</title>
-  <meta name="description" content="Portafolio académico: macro-monetaria, informalidad y autoempleo, mercados laborales, métodos cuantitativos." />
+  <title>Guadalupe Acra — Academic Portfolio</title>
+  <meta name="description" content="Economía. Research notes, proyectos y presentaciones." />
 
-  <!-- Vintage fonts (opcional, pero recomendado) -->
+  <!-- Tipografías sofisticadas (editorial + sans limpio) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,650&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --paper: #f6f1e6;
-      --ink: #1b1b1b;
-      --muted: #5a5147;
-      --line: rgba(27,27,27,.14);
-      --accent: #6b1d2b;        /* burgundy */
-      --accent2:#2d3a2f;        /* deep olive */
-      --card: rgba(255,255,255,.55);
-      --shadow: 0 14px 30px rgba(0,0,0,.10);
-      --radius: 18px;
-      --max: 980px;
+      --bg: #f3f0ea;          /* fondo tipo papel */
+      --panel: rgba(255,255,255,.62);
+      --ink: #111111;
+      --muted: #5b5b5b;
+      --line: rgba(17,17,17,.14);
+      --accent: #6b1d2b;      /* borgoña */
+      --accent2:#1f3a2e;      /* verde profundo */
+      --shadow: 0 20px 60px rgba(0,0,0,.08);
+      --radius: 22px;
+      --max: 1100px;
     }
 
-    /* Paper background (sin imágenes) */
-    html, body { height: 100%; }
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
     body{
       margin: 0;
       color: var(--ink);
       background:
-        radial-gradient(1200px 800px at 20% 10%, rgba(107,29,43,.06), transparent 60%),
-        radial-gradient(900px 700px at 80% 30%, rgba(45,58,47,.06), transparent 55%),
-        repeating-linear-gradient(0deg, rgba(0,0,0,.015), rgba(0,0,0,.015) 1px, transparent 1px, transparent 6px),
-        linear-gradient(180deg, var(--paper), #f3ecde);
-      font-family: "Spectral", ui-serif, Georgia, "Times New Roman", serif;
-      line-height: 1.7;
+        radial-gradient(1100px 700px at 15% 10%, rgba(107,29,43,.06), transparent 55%),
+        radial-gradient(900px 600px at 85% 20%, rgba(31,58,46,.06), transparent 55%),
+        linear-gradient(180deg, var(--bg), #efe9df);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.65;
     }
 
     a{ color: inherit; text-decoration: none; }
-    a.underlined{ border-bottom: 1px solid var(--line); padding-bottom: 2px; }
-    a.underlined:hover{ border-bottom-color: rgba(27,27,27,.45); }
+    a.link{
+      color: var(--accent);
+      border-bottom: 1px solid rgba(107,29,43,.25);
+      padding-bottom: 2px;
+    }
+    a.link:hover{ border-bottom-color: rgba(107,29,43,.55); }
 
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 44px 20px 64px; }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 22px 20px 70px; }
 
-    /* Header */
-    header{
-      display: grid;
-      grid-template-columns: 1fr;
+    /* NAVBAR */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(243,240,234,.78);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 14px;
-      padding: 34px 22px;
+      flex-wrap: wrap;
+    }
+    .brand{
+      font-family: Fraunces, serif;
+      font-weight: 500;
+      letter-spacing: .2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dot{
+      width: 10px; height: 10px; border-radius: 999px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      box-shadow: 0 8px 16px rgba(0,0,0,.12);
+    }
+    .menu{
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .menu a{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+    .menu a:hover{
+      color: var(--ink);
+      border-color: var(--line);
+      background: rgba(255,255,255,.55);
+    }
+
+    /* HERO */
+    .hero{
+      margin-top: 26px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255,255,255,.40);
+      background: var(--panel);
       box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 26px;
+      align-items: start;
     }
-    header:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(120px 120px at 12% 26%, rgba(107,29,43,.12), transparent 65%),
-        radial-gradient(160px 160px at 88% 18%, rgba(45,58,47,.10), transparent 65%);
-      pointer-events:none;
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
     }
-    .toprow{ display:flex; align-items:flex-end; justify-content:space-between; gap: 18px; flex-wrap:wrap; position:relative; }
-    .name{
-      font-family: "EB Garamond", serif;
-      font-weight: 600;
+
+    h1{
+      font-family: Fraunces, serif;
+      font-weight: 650;
+      margin: 6px 0 10px;
+      font-size: clamp(34px, 4vw, 52px);
       letter-spacing: .2px;
-      font-size: clamp(34px, 3.6vw, 46px);
-      margin: 0;
     }
-    .tag{
+    .subtitle{
       margin: 0;
       color: var(--muted);
       font-size: 16px;
     }
-    .monogram{
-      width: 46px; height: 46px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      display:grid; place-items:center;
-      font-family: "EB Garamond", serif;
-      font-weight: 600;
-      color: var(--accent);
-      background: rgba(255,255,255,.45);
-    }
-
-    /* Nav */
-    nav{
-      display:flex; gap: 16px; flex-wrap: wrap;
-      position: relative;
-      padding-top: 6px;
-    }
-    nav a{
-      font-size: 15px;
-      color: var(--ink);
-      border-bottom: 1px solid transparent;
-      padding-bottom: 3px;
-    }
-    nav a:hover{ border-bottom-color: rgba(27,27,27,.35); }
-    .divider{
-      display:flex; align-items:center; gap: 12px;
-      color: var(--muted);
-      margin-top: 10px;
-      position: relative;
-    }
-    .divider:before, .divider:after{
-      content:"";
-      height: 1px;
-      background: var(--line);
-      flex: 1;
-    }
-    .divider span{
-      font-family: "EB Garamond", serif;
-      letter-spacing: .6px;
-    }
-
-    /* Main sections */
-    main{ margin-top: 22px; }
-    .lead{
-      padding: 18px 4px 6px;
-      color: var(--ink);
-      font-size: 17px;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
+    .bio{
       margin-top: 18px;
+      font-size: 16px;
+      color: var(--ink);
     }
-    @media(min-width: 860px){
-      .grid{ grid-template-columns: 1.2fr .8fr; }
+    .quicklinks{
+      margin-top: 16px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: var(--muted);
     }
 
-    .card{
+    /* FOTO */
+    .photo{
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: rgba(255,255,255,.55);
+    }
+    .photo img{
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: saturate(.95) contrast(1.02);
+    }
+    .photo-caption{
+      padding: 10px 12px;
+      font-size: 12.5px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,.35);
+    }
+
+    /* SECCIONES */
+    .sections{
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .section{
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: var(--card);
-      box-shadow: var(--shadow);
-      padding: 18px 18px;
+      background: rgba(255,255,255,.55);
+      box-shadow: 0 14px 40px rgba(0,0,0,.06);
+      padding: 20px 22px;
     }
-    .card h2{
-      font-family: "EB Garamond", serif;
-      font-weight: 600;
-      margin: 0 0 6px 0;
-      font-size: 26px;
+    .section h2{
+      font-family: Fraunces, serif;
+      font-weight: 500;
+      margin: 0 0 10px;
+      font-size: 22px;
     }
+    .section p{ margin: 10px 0; color: var(--ink); }
     .muted{ color: var(--muted); }
 
-    .btnrow{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
-    .btn{
-      display:inline-flex; align-items:center; gap: 8px;
-      padding: 9px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(27,27,27,.35);
-      background: rgba(255,255,255,.55);
-      transition: transform .12s ease, background .12s ease;
-      font-size: 14px;
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.80); }
-    .btn.primary{
-      border-color: rgba(107,29,43,.45);
-      color: var(--accent);
-    }
+    .list{ margin: 10px 0 0; padding-left: 18px; }
+    .list li{ margin: 8px 0; }
 
-    /* Contact */
-    .contactlist{ margin: 10px 0 0; padding-left: 18px; }
-    .contactlist li{ margin: 6px 0; }
-    .pill{
-      display:inline-block;
+    /* “chips” */
+    .chips{ display:flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .chip{
       font-size: 12px;
-      letter-spacing: .4px;
-      text-transform: uppercase;
-      color: var(--accent2);
-      border: 1px solid rgba(45,58,47,.28);
-      padding: 4px 10px;
+      letter-spacing: .3px;
+      padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,.45);
-      margin-bottom: 10px;
+      border: 1px solid rgba(17,17,17,.14);
+      background: rgba(255,255,255,.55);
+      color: var(--muted);
     }
+    .chip.accent{ border-color: rgba(107,29,43,.22); color: var(--accent); }
 
     footer{
-      margin-top: 26px;
+      margin-top: 22px;
+      text-align: center;
       color: var(--muted);
       font-size: 13px;
-      text-align: center;
+      padding: 14px 0 0;
     }
-    .smallcaps{ font-variant: small-caps; letter-spacing: .6px; }
+    .rule{
+      margin: 18px auto 10px;
+      height: 1px;
+      background: var(--line);
+      max-width: 520px;
+    }
   </style>
 </head>
 
 <body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand"><span class="dot"></span>Guadalupe Acra</div>
+      <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#edu">Education & experience</a>
+        <a href="#research">Research</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#talks">Academic presentations</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
   <div class="wrap">
-    <header>
-      <div class="toprow">
-        <div>
-          <h1 class="name">Guadalupe Acra</h1>
-          <p class="tag">Economía • Lima, Perú</p>
-        </div>
-        <div class="monogram" aria-hidden="true">GA</div>
-      </div>
-
-      <!-- OJO: enlaces relativos (sin /) para que funcionen en tu repo -->
-      <nav>
-        <a href="about/" class="underlined">Sobre mí</a>
-        <a href="research/" class="underlined">Research / Ensayos</a>
-        <a href="projects/" class="underlined">Proyectos</a>
-        <a href="cv/" class="underlined">CV</a>
-        <a href="#contacto" class="underlined">Contacto</a>
-      </nav>
-
-      <div class="divider"><span>❦</span></div>
-    </header>
-
-    <main>
-      <p class="lead">
-        Intereses: macro-monetaria, informalidad y autoempleo, mercados laborales, métodos cuantitativos.
-        Aquí publico ensayos breves, notas de lectura y proyectos.
-      </p>
-
-      <div class="grid">
-        <section class="card">
-          <span class="pill">Destacado</span>
-          <h2>Último ensayo</h2>
-          <p class="muted">Título del ensayo (fecha)</p>
-          <p>Resumen de 2–3 líneas del aporte central.</p>
-          <div class="btnrow">
-            <a class="btn primary" href="research/">Ver Research</a>
-            <a class="btn" href="projects/">Ver Proyectos</a>
-          </div>
-        </section>
-
-        <aside class="card">
-          <span class="pill">Perfil</span>
-          <h2>CV</h2>
-          <p class="muted">Versión PDF y versión web.</p>
-          <div class="btnrow">
-            <a class="btn primary" href="cv/">Abrir CV</a>
-          </div>
-        </aside>
-      </div>
-
-      <section class="card" id="contacto" style="margin-top:16px;">
-        <span class="pill">Contacto</span>
-        <h2>Escríbeme</h2>
-        <p class="muted">Para investigación, colaboración académica o proyectos.</p>
-
-        <ul class="contactlist">
-          <!-- Reemplaza con tu Gmail real -->
-          <li><b>Email:</b> <a class="underlined" href="mailto:tuemail@gmail.com">tuemail@gmail.com</a></li>
-
-          <!-- Opcionales -->
-          <li><b>LinkedIn:</b> <a class="underlined" href="https://www.linkedin.com/in/tuusuario/" target="_blank" rel="noopener">linkedin.com/in/tuusuario</a></li>
-          <li><b>GitHub:</b> <a class="underlined" href="https://github.com/gacrat-eng" target="_blank" rel="noopener">github.com/gacrat-eng</a></li>
-        </ul>
-
-        <p class="muted" style="margin-top:12px;">
-          Si prefieres, también puedes escribirme con asunto: <span class="smallcaps">Research Collaboration</span>.
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div>
+        <p class="subtitle">Economía • Lima, Perú</p>
+        <h1>Guadalupe Acra</h1>
+        <p class="bio">
+          Intereses: macro-monetaria, informalidad y autoempleo, mercados laborales y métodos cuantitativos.
+          Este sitio reúne mis ensayos, notas de lectura, proyectos y presentaciones académicas.
         </p>
+
+        <div class="chips">
+          <span class="chip accent">Macroeconomics</span>
+          <span class="chip">Labor</span>
+          <span class="chip">Informality</span>
+          <span class="chip">Quant Methods</span>
+        </div>
+
+        <div class="quicklinks">
+          <span class="muted">Contact:</span>
+          <a class="link" href="#contact">here</a>
+          <span class="muted">•</span>
+          <span class="muted">CV:</span>
+          <a class="link" href="#edu">here</a>
+        </div>
+      </div>
+
+      <aside class="photo">
+        <!-- Sube tu foto en: assets/img/profile.jpg -->
+        <img src="assets/img/profile.jpg" alt="Foto de perfil" />
+        <div class="photo-caption">Photo • (opcional: lugar / año)</div>
+      </aside>
+    </section>
+
+    <!-- SECCIONES -->
+    <div class="sections">
+      <section class="section" id="edu">
+        <h2>Education & Experience</h2>
+        <ul class="list">
+          <li><b>Universidad del Pacífico</b> — B.A. Economics (en curso) <span class="muted">• Lima</span></li>
+          <li><b>Formación complementaria</b> — (IMCA / Excel avanzado / R / Stata) <span class="muted">• 2025–2026</span></li>
+          <li><b>Intereses de investigación</b> — informalidad urbana, autoempleo, fricciones, política monetaria</li>
+        </ul>
+        <p class="muted">Aquí puedes añadir un link a tu CV PDF cuando lo subas (ej. <code>assets/pdf/cv.pdf</code>).</p>
       </section>
 
-      <footer>
-        <div class="divider" style="margin: 18px 0 12px;"><span>✦</span></div>
-        <div>© <span class="smallcaps">Guadalupe Acra</span> • GitHub Pages</div>
-      </footer>
-    </main>
+      <section class="section" id="research">
+        <h2>Research</h2>
+        <ul class="list">
+          <li><b>Ensayo 1:</b> Título del ensayo — <span class="muted">v1.0 (fecha)</span> • <a class="link" href="#">PDF</a></li>
+          <li><b>Nota de lectura:</b> Autor / Paper — <span class="muted">ideas clave + comentario</span></li>
+        </ul>
+        <p class="muted">Si quieres, después lo convertimos en lista “tipo papers” con abstract expandible.</p>
+      </section>
+
+      <section class="section" id="teaching">
+        <h2>Teaching</h2>
+        <p class="muted">Si no tienes experiencia docente, puedes usar esta sección para “Academic materials”:</p>
+        <ul class="list">
+          <li>Apuntes: Álgebra Lineal / Análisis Real (PDFs)</li>
+          <li>Guías: Micro II / Macro / Econometría (resúmenes)</li>
+        </ul>
+      </section>
+
+      <section class="section" id="talks">
+        <h2>Academic Presentations</h2>
+        <ul class="list">
+          <li><b>Presentación:</b> Título — <span class="muted">Evento / fecha</span> • <a class="link" href="#">slides</a></li>
+          <li><b>Poster / Pitch:</b> Título — <span class="muted">fecha</span></li>
+        </ul>
+      </section>
+
+      <section class="section" id="contact">
+        <h2>Contact</h2>
+        <p>Escríbeme para colaboración académica, research assistance o proyectos.</p>
+        <ul class="list">
+          <li><b>Email:</b> <a class="link" href="mailto:tuemail@gmail.com">tuemail@gmail.com</a></li>
+          <li><b>GitHub:</b> <a class="link" href="https://github.com/gacrat-eng" target="_blank" rel="noopener">github.com/gacrat-eng</a></li>
+          <li><b>LinkedIn:</b> <a class="link" href="https://www.linkedin.com/in/tuusuario/" target="_blank" rel="noopener">linkedin.com/in/tuusuario</a></li>
+        </ul>
+        <p class="muted">Sugerencia de asunto: “Research collaboration — [tema]”.</p>
+      </section>
+    </div>
+
+    <footer>
+      <div class="rule"></div>
+      © Guadalupe Acra • GitHub Pages
+    </footer>
   </div>
 </body>
 </html>
